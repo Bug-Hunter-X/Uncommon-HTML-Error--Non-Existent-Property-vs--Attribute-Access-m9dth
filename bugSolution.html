@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug Solution</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text is visible.
+  </div>
+
+  <script>
+    //Safely access attributes
+    var myAttribute = document.getElementById("myDiv").getAttribute("nonExistentAttribute");
+    if(myAttribute === null){
+        console.log("Attribute does not exist");
+    } else {
+        console.log(myAttribute);
+    }
+
+    //Safely access properties
+    var myDiv = document.getElementById("myDiv");
+    if(myDiv && myDiv.hasOwnProperty("nonExistentProperty")){
+        var myProperty = myDiv.nonExistentProperty;
+        console.log(myProperty);
+    } else {
+        console.log("Property does not exist or element not found");
+    }
+  </script>
+</body>
+</html>
