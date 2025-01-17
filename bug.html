@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text is visible.
+  </div>
+
+  <script>
+    //Attempting to access a non-existent attribute
+    var myAttribute = document.getElementById("myDiv").getAttribute("nonExistentAttribute");
+    console.log(myAttribute); // Outputs 'null'
+
+    //However, if you try to access a non-existent property in a similar way this will throw an error.
+    var myProperty = document.getElementById("myDiv").nonExistentProperty;
+    console.log(myProperty); // Throws an error in strict mode (Uncaught TypeError: Cannot read properties of null (reading 'nonExistentProperty'))
+
+    //The difference lies in how the browser handles this in this case. getAttribute handles it gracefully while accessing a non-existent property on an object throws an error.
+  </script>
+</body>
+</html>
